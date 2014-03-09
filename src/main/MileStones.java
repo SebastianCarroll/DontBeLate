@@ -1,3 +1,4 @@
+package main;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.io.Serializable;
@@ -14,11 +15,34 @@ import javax.enterprise.context.SessionScoped;
 public class MileStones implements Serializable {
 	
 	private Calendar end = new GregorianCalendar();
-	private ArrayList<MileStone> mileStones = 
+	private ArrayList<MileStone> milestones = 
 			new ArrayList<MileStone>();
+	private String milestonesUnformatted = "";
+	
+	private ArrayList<String> nameList = 
+			new ArrayList<String>();
 	
 	public MileStones(){
 		this.setEnd(new GregorianCalendar());
+		nameList.add("Name1");
+		nameList.add("Name2");
+		nameList.add("Name3");
+	}
+
+	public ArrayList<MileStone> getMilestones() {
+		return milestones;
+	}
+
+	public void setMilestones(ArrayList<MileStone> milestones) {
+		this.milestones = milestones;
+	}
+
+	public ArrayList<String> getNameList() {
+		return nameList;
+	}
+
+	public void setNameList(ArrayList<String> nameList) {
+		this.nameList = nameList;
 	}
 
 	public MileStones(Calendar end2) {
@@ -34,7 +58,11 @@ public class MileStones implements Serializable {
 	}
 	
 	public void addMileStone(MileStone milestone){
-		mileStones.add(milestone);
+		milestones.add(milestone);
+	}
+	
+	public void addNewMilestone(){
+		milestones.add(new MileStone("", 0));
 	}
 
 	public Calendar getStart() {
@@ -50,7 +78,7 @@ public class MileStones implements Serializable {
 		SimpleDateFormat df = new SimpleDateFormat("HH:mm");
 		String output = df.format(end.getTime()) + " - End\n";
 		Calendar current = (Calendar) end.clone();
-		for(MileStone m : mileStones){
+		for(MileStone m : milestones){
 			current.add(Calendar.MINUTE, -m.getDuration());
 			output += df.format(current.getTime()) + 
 					" - " + m.getDescription() + "\n";
@@ -60,9 +88,18 @@ public class MileStones implements Serializable {
 
 	private int sumDuration() {
 		int duration = 0;
-		for(MileStone m : mileStones){
+		for(MileStone m : milestones){
 			duration += m.getDuration();
 		}
 		return duration;
+	}
+
+	public String getMilestonesUnformatted() {
+		return milestonesUnformatted;
+	}
+
+	public void setMilestonesUnformatted(String milestonesUnformatted) {
+		//setMilestones(formatMilestoneText(milestonesUnformatted));
+		this.milestonesUnformatted = milestonesUnformatted;
 	}
 }

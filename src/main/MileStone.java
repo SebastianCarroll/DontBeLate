@@ -1,3 +1,4 @@
+package main;
 public class MileStone {
 	private Integer duration;
 	private String description;

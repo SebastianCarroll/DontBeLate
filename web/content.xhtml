@@ -3,10 +3,25 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-	<h:outputLabel for="amountInput" value="End Time"/>
-	<h:inputText id="amountInput" value="#{milestones.end.time}">
-	   <f:convertDateTime pattern="HH:mm"></f:convertDateTime>
-	</h:inputText>
-	
-	
+	<h:panelGrid columns="2">
+		<h:outputLabel for="amountInput" value="End Time" />
+		<h:inputText id="amountInput" value="#{milestones.end.time}">
+			<f:convertDateTime pattern="HH:mm"></f:convertDateTime>
+		</h:inputText>
+	</h:panelGrid>
+
+	<!-- 	<h:panelGrid columns="3"> -->
+	<!-- 		<ui:repeat value="#{milestones.nameList}" var="value"> -->
+	<!-- 			<h:outputLabel for="amountInput" value="#{value}" /> -->
+	<!-- 			<h:inputText id="amountInput" value="#{milestones.end.time}"> -->
+	<!-- 				<f:convertDateTime pattern="HH:mm"></f:convertDateTime> -->
+	<!-- 			</h:inputText> -->
+	<!-- 			<br /> -->
+	<!-- 		</ui:repeat> -->
+	<!-- 	</h:panelGrid> -->
+
+	<textarea name="random value" cols="30" rows="10"></textarea>
+
+	<h:commandButton value="submit" type="button" />
+
 </ui:composition>
