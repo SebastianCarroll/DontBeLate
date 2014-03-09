@@ -1,0 +1,12 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<h:outputLabel for="amountInput" value="End Time"/>
+	<h:inputText id="amountInput" value="#{milestones.end.time}">
+	   <f:convertDateTime pattern="HH:mm"></f:convertDateTime>
+	</h:inputText>
+	
+	
+</ui:composition>
