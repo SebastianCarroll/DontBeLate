@@ -2,6 +2,7 @@ package main;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.apache.commons.lang3.StringUtils;;
 
 /**
@@ -9,7 +10,7 @@ import org.apache.commons.lang3.StringUtils;;
  * @author sjc
  */
 public class Formatter {
-	public static ArrayList<MileStone> parseMileStones(String freeInput) {
+	public static ArrayList<MileStone> textToMileStones(String freeInput) {
 		ArrayList<MileStone> mss = new ArrayList<MileStone>();
 		String[] lines = freeInput.split(System.getProperty("line.separator"));
 		for (String line : lines) {
@@ -17,6 +18,14 @@ public class Formatter {
 			mss.add(ms);
 		}
 		return mss;
+	}
+	
+	public static String mileStonesToText(ArrayList<MileStone> milestones){
+		String milestonesAsText = "";
+		for(MileStone m : milestones){
+			milestonesAsText += m.toString() + "\n";
+		}
+		return milestonesAsText;
 	}
 
 	/**

@@ -30,7 +30,7 @@ public class FormatterTest {
 		}
 		
 		ArrayList<MileStone> actual = 
-				Formatter.parseMileStones(inputSample.toString());
+				Formatter.textToMileStones(inputSample.toString());
 		for(int i=0; i<actual.size(); i++){
 			MileStone currentActual = actual.get(i);
 			MileStone currentExpected =expected.get(i);

@@ -18,9 +18,6 @@ public class MileStones implements Serializable {
 	private ArrayList<MileStone> milestones = 
 			new ArrayList<MileStone>();
 	
-	private ArrayList<String> nameList = 
-			new ArrayList<String>();
-	
 	/**
 	 * Default constructor: Necessary as jsf requires it
 	 */
@@ -28,20 +25,12 @@ public class MileStones implements Serializable {
 		this.setEnd(new GregorianCalendar());
 	}
 
-	public ArrayList<MileStone> getMilestones() {
-		return milestones;
+	public String getMilestones() {
+		return Formatter.mileStonesToText(milestones);
 	}
 
-	public void setMilestones(ArrayList<MileStone> milestones) {
-		this.milestones = milestones;
-	}
-
-	public ArrayList<String> getNameList() {
-		return nameList;
-	}
-
-	public void setNameList(ArrayList<String> nameList) {
-		this.nameList = nameList;
+	public void setMilestones(String textList) {
+		this.milestones = Formatter.textToMileStones(textList);
 	}
 
 	public MileStones(Calendar end2) {

@@ -38,4 +38,8 @@ public class MileStone {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public String toString(){
+		return duration.toString() + " " + description;
+	}
 }

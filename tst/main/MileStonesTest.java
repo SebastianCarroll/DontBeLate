@@ -93,13 +93,15 @@ public class MileStonesTest {
 	}
 	
 	@Test
-	public void test_formatting(){
+	public void test_getsetMilestones(){
 		StringBuilder inputSample = new StringBuilder();
 		inputSample.append("5 Wait\n");
 		inputSample.append("10 Find Park\n");
 		inputSample.append("15 Drive\n");
 		inputSample.append("5 Clean Teeth\n");
 		MileStones ms = new MileStones();
+		ms.setMilestones(inputSample.toString());
+		assertEquals(inputSample.toString(), ms.getMilestones());
 	}
 
 }
