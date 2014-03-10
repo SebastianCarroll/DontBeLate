@@ -2,29 +2,42 @@ package main;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import org.apache.commons.lang3.StringUtils;;
 
-import com.sun.xml.internal.ws.util.StringUtils;
-
+/**
+ * Imports the free text input into {@link MileStone}/{@link MileStones} objects
+ * @author sjc
+ */
 public class Formatter {
 	public static ArrayList<MileStone> parseMileStones(String freeInput) {
 		ArrayList<MileStone> mss = new ArrayList<MileStone>();
 		String[] lines = freeInput.split(System.getProperty("line.separator"));
 		for (String line : lines) {
-
-			MileStone ms = new MileStone(line);
-			mss.add();
+			MileStone ms = parseLine(line);
+			mss.add(ms);
 		}
+		return mss;
 	}
 
+	/**
+	 * Parses a text line and creates a MileStone object from that
+	 * @param line The input line in the format: [Duration] [description]
+	 * @return A MileStone parsed from line
+	 */
 	public static MileStone parseLine(String line){
 		Integer duration = 0;
 		String description = "";
 		String[] words = line.split("\\s+");
+		MileStone milestone = null;
 		try{
 			duration = Integer.parseInt(words[0]);
-			String[] desc =  Arrays.copyOfRange(words, 1, words.length);
-			description = StringUtils.join(desc, " ");
+			String[] descWords =  Arrays.copyOfRange(words, 1, words.length);
+			description = StringUtils.join(descWords, " ");
+			milestone = new MileStone(description, duration);
+		} catch(NumberFormatException e){
+			return null;
 		}
+		return milestone;
 	}
 	
 }

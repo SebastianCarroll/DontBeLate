@@ -16,7 +16,6 @@ public class FormatterTest {
 		inputSample.append("15 Drive\n");
 		inputSample.append("5 Clean Teeth\n");
 		
-		
 		ArrayList<MileStone> expected = new ArrayList<MileStone>();
 		
 		MileStone[] eachMileStone = {
@@ -32,8 +31,11 @@ public class FormatterTest {
 		
 		ArrayList<MileStone> actual = 
 				Formatter.parseMileStones(inputSample.toString());
-		assertArrayEquals(expected.toArray(), actual.toArray());
-		
+		for(int i=0; i<actual.size(); i++){
+			MileStone currentActual = actual.get(i);
+			MileStone currentExpected =expected.get(i);
+			assertEquals(currentExpected.getDuration(), currentActual.getDuration());
+			assertEquals(currentExpected.getDescription(), currentActual.getDescription());
+		}
 	}
-
 }

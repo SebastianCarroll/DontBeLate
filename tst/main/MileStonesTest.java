@@ -100,8 +100,6 @@ public class MileStonesTest {
 		inputSample.append("15 Drive\n");
 		inputSample.append("5 Clean Teeth\n");
 		MileStones ms = new MileStones();
-		ms.setMilestonesUnformatted(inputSample.toString());
-
 	}
 
 }
