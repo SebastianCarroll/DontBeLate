@@ -3,14 +3,17 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-	<h:panelGrid columns="2">
-		<h:outputLabel for="amountInput" value="End Time" />
-		<h:inputText id="amountInput" value="#{milestones.end.time}">
-			<f:convertDateTime pattern="HH:mm"></f:convertDateTime>
-		</h:inputText>
-	</h:panelGrid>
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel for="amountInput" value="End Time" />
+			<h:inputText id="amountInput" value="#{milestones.end.time}">
+				<f:convertDateTime pattern="HH:mm"></f:convertDateTime>
+			</h:inputText>
+		</h:panelGrid>
 
-	<h:inputTextarea name="task list as text" cols="30" rows="10" value="#{milestones.milestones}" ></h:inputTextarea>
-
-	<h:commandButton value="submit" type="button" />
+		<h:inputTextarea name="task list as text" cols="30" rows="10"
+			value="#{milestones.milestones}">
+		</h:inputTextarea>
+		<h:commandButton value="Submit" type="submit" action="view" />
+	</h:form>
 </ui:composition>
