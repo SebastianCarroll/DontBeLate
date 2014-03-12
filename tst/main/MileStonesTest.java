@@ -2,6 +2,7 @@ package main;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -38,7 +39,7 @@ public class MileStonesTest {
 		mss.addMileStone(ms2);
 		mss.addMileStone(ms3);
 		mss.addMileStone(ms4);
-		assertEquals(start.compareTo(mss.getStart()), 0);
+		assertEquals(start.compareTo(mss.calculatedStart()), 0);
 	}	
 	
 	private Integer SumInts(Integer[] ds) {
@@ -63,7 +64,7 @@ public class MileStonesTest {
 		
 		MileStone ms = new MileStone(description, duration);
 		mss.addMileStone(ms);
-		assertEquals(start, mss.getStart());
+		assertEquals(start, mss.calculatedStart());
 	}
 	
 	@Test
@@ -102,6 +103,35 @@ public class MileStonesTest {
 		MileStones ms = new MileStones();
 		ms.setMilestones(inputSample.toString());
 		assertEquals(inputSample.toString(), ms.getMilestones());
+	}
+	
+	@Test
+	public void test_getMilestonesAsArray(){
+		StringBuilder inputSample = new StringBuilder();
+		inputSample.append("5 Wait\n");
+		inputSample.append("10 Find Park\n");
+		inputSample.append("15 Drive\n");
+		inputSample.append("5 Clean Teeth\n");
+		
+		Calendar dueDate = new GregorianCalendar(2014, 3, 12, 14, 00);
+		MileStones ms = new MileStones(dueDate);
+		
+		ms.setMilestones(inputSample.toString());
+		
+		ArrayList<Calendar> startTimes = new ArrayList<Calendar>();
+		startTimes.add(0, new GregorianCalendar(2014, 3, 12, 13, 55));
+		startTimes.add(1, new GregorianCalendar(2014, 3, 12, 13, 45));
+		startTimes.add(2, new GregorianCalendar(2014, 3, 12, 13, 30));
+		startTimes.add(3, new GregorianCalendar(2014, 3, 12, 13, 25));
+		
+		
+		ArrayList<MileStone> baseMileStones = ms.getMilestonesAsArray();
+		
+		for(int i=0; i<baseMileStones.size(); i++){
+			Calendar dueNow = startTimes.get(i);
+			MileStone m = baseMileStones.get(i);
+			assertEquals(dueNow.getTime(), m.getStartTime().getTime());
+		}
 	}
 
 }

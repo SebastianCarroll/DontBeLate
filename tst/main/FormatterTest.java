@@ -38,4 +38,6 @@ public class FormatterTest {
 			assertEquals(currentExpected.getDescription(), currentActual.getDescription());
 		}
 	}
+	
 }
+

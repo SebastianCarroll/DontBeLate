@@ -1,4 +1,7 @@
 package main;
+
+import java.util.Calendar;
+
 /**
  * Basic class the record the duration and description of each task
  * @author sjc
@@ -6,6 +9,7 @@ package main;
 public class MileStone {
 	private Integer duration;
 	private String description;
+	private Calendar startTime;
 
 	public MileStone(String description, 
 			Integer duration) {
@@ -41,5 +45,13 @@ public class MileStone {
 	
 	public String toString(){
 		return duration.toString() + " " + description;
+	}
+
+	public  Calendar getStartTime(){
+		return startTime;
+	}
+	public void setStartTime(Calendar end) {
+		end.add(Calendar.MINUTE, -duration);
+		startTime = end;
 	}
 }

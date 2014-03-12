@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<table>
+		<tr>
+			<th><h:outputText value="#{milestones.end.time}">
+					<f:convertDateTime pattern="HH:mm"></f:convertDateTime>
+				</h:outputText></th>
+			<th>End</th>
+		</tr>
+		<tbody>
+			<ui:repeat var="milestone" value="#{milestones.milestonesAsArray}">
+				<h:panelGroup>
+					<tr>
+						<td>#{milestone.duration}</td>
+						<td>#{milestone.description}</td>
+					</tr>
+				</h:panelGroup>
+			</ui:repeat>
+		</tbody>
+	</table>
+
+</ui:composition>

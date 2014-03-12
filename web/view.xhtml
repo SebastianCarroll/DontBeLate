@@ -1,12 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
-   <h:head>
-      <title>Welcome</title>
-   </h:head>
-   <h:body>
-      <h3>Welcome to JavaServer Faces!</h3>
-   </h:body>
+           xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<title><ui:insert name="title">DontBeLate</ui:insert></title>
+</head>
+<body>
+    <!-- <ui:debug hotkey="x" rendered="#{initParam['javax.faces.FACELETS_DEVELOPMENT']}"/> -->
+
+    <div id="header">
+        <ui:insert name="header">
+            <div>
+                <ui:include src="/WEB-INF/view/view_header.xhtml" />
+            </div>
+        </ui:insert>
+    </div>
+
+
+    <div id="content">
+        <ui:insert name="content">
+            <div>
+                <ui:include src="/WEB-INF/view/view_content.xhtml" />
+            </div>
+        </ui:insert>
+    </div>
+
+    <div id="footer">
+        <ui:insert name="footer">
+            <div>
+                <ui:include src="/WEB-INF/view/view_footer.xhtml" />
+            </div>
+        </ui:insert>
+    </div>
+
+</body>
 </html>

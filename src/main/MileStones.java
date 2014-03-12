@@ -39,27 +39,40 @@ public class MileStones implements Serializable {
 	public Calendar getEnd() {
 		return end;
 	}
+	
+	public void setEnd(Calendar end) {
+		this.end = end;
+	}
 
 	public String getMilestones() {
 		return Formatter.mileStonesToText(milestones);
+	}	
+	
+	public void setMilestones(String textList) {
+		this.milestones = Formatter.textToMileStones(textList);
+	}
+	
+	public ArrayList<MileStone> getMilestonesAsArray(){
+		setStartTimes();
+		return milestones;
 	}
 
-	public Calendar getStart() {
+	public Calendar calculatedStart() {
 		int duration = sumDuration();
 		Calendar start = new GregorianCalendar();
 		start = (Calendar) end.clone();
 		start.add(Calendar.MINUTE, -duration);
 		return start;
 	}
-
-	public void setEnd(Calendar end) {
-		this.end = end;
+	
+	private void setStartTimes(){
+		Calendar endTmp = (Calendar) end.clone();
+		for(MileStone m : milestones){
+			m.setStartTime(endTmp);
+			endTmp = m.getStartTime();
+		}
 	}
-
-	public void setMilestones(String textList) {
-		this.milestones = Formatter.textToMileStones(textList);
-	}
-
+	
 	private int sumDuration() {
 		int duration = 0;
 		for (MileStone m : milestones) {
