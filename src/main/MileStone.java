@@ -51,7 +51,8 @@ public class MileStone {
 		return startTime;
 	}
 	public void setStartTime(Calendar end) {
-		end.add(Calendar.MINUTE, -duration);
-		startTime = end;
+		Calendar endClone = (Calendar) end.clone();
+		endClone.add(Calendar.MINUTE, -duration);
+		startTime = endClone;
 	}
 }
