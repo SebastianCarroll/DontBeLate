@@ -10,16 +10,18 @@
 				</h:outputText></th>
 			<th>End</th>
 		</tr>
-		<tbody>
 			<ui:repeat var="milestone" value="#{milestones.milestonesAsArray}">
 				<h:panelGroup>
 					<tr>
-						<td>#{milestone.duration}</td>
-						<td>#{milestone.description}</td>
+						<td><h:outputText value="#{milestone.startTime.time}">
+								<f:convertDateTime pattern="HH:mm"></f:convertDateTime>
+							</h:outputText></td>
+						<td><h:outputText value="#{milestone.description}">
+								<f:convertDateTime pattern="HH:mm"></f:convertDateTime>
+							</h:outputText></td>
 					</tr>
 				</h:panelGroup>
 			</ui:repeat>
-		</tbody>
 	</table>
 
 </ui:composition>
